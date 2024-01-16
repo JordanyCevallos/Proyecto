@@ -1,0 +1,29 @@
+body {
+    margin: 60px;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+.container {
+    width: 70vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    width: 80%; /* Ajusta el ancho según tus necesidades */
+    max-width: 400px; /* Establece un ancho máximo para evitar que el formulario sea demasiado ancho en pantallas grandes */
+}
+
+.width-personalized {
+    width: 100%;
+}
+
+/* Consulta de medios para hacer el formulario más estrecho en pantallas pequeñas */
+@media screen and (max-width: 600px) {
+    .form-container {
+        width: 90%;
+    }
+}

@@ -1,0 +1,263 @@
+
+<div class="grid-container">
+  <h1 class="mat-h1">MANUAL DE REQUERIMIENTOS</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <!-- Contenido específico de cada tarjeta -->
+          <ng-container *ngIf="card.title === '¿Qué es un ticket?'">
+            <h4>Un ticket es un requerimiento, se genera a partir de un correo enviado a soporte. Dicho requerimiento se mueve a la carpeta llamada de la misma manera "requerimientos", y se genera el ticket en el iTop.</h4>
+          </ng-container>
+          <ng-container *ngIf="card.title === '¿Qué se hace con los tickets una vez resueltos?'">
+            <h4>Una vez resuelto el requerimiento, se deberá cerrar dicho requerimiento. Para esto, se siguen los siguientes pasos:</h4>
+            <ol>
+              <li>Iniciar sesión en el iTop con las credenciales de tu tutor.</li>
+              <li>Buscar el requerimiento en la barra de búsqueda, solo ingresando los 4 últimos dígitos.</li>
+              <li>Seleccionar el requerimiento.</li>
+              <li>Una vez hecho esto, se desplegará la información del requerimiento.</li>
+              <li>En la esquina superior derecha, hay un botón llamado "otras acciones".</li>
+              <li>"Marcar como solucionado". Después deberás escribir lo que hiciste en el requerimiento, no te olvides del punto al final.</li>
+              <li>Luego, darás 3 veces enter y pegarás el número del requerimiento, después copiarás todo el texto hecho, para más adelante.</li>
+              <li>Marcar como solucionado.</li>
+              <li>Cerrar este ticket y pegarás lo que copiaste anteriormente.</li>
+              <li>Y listo, ya habrás cerrado el requerimiento. Recuerda siempre hacerlo después de atender a los funcionarios.</li>
+          </ol>
+          </ng-container>
+
+          <ng-container *ngIf="card.title === 'Registra tus tickets'">
+          <h4>Una vez cerrado el ticket en el iTop, deberás registrarlo de igual manera en el registro de tickets de los pasantes. Recuerda hacerlo también ya que esto es el registro de tus actividades.</h4>
+          </ng-container>
+          
+          <ng-container *ngIf="card.title === '¿Cómo resolver requerimientos?'">
+            <h3>ANTES DE RESOLVER CUALQUIER REQUERIMIENTO, DILE AL FUNCIONARIO QUE GUARDE CUALQUIER DOCUMENTO QUE SE ENCUENTRE REALIZANDO.</h3>
+            <h4>Una vez registrado como pasante, se te empezarán a asignar tareas. Debes entender que hay varios tipos de requerimientos.</h4>
+
+            <ol>
+              <li> Internet</li>
+              <li>Instalaciones</li>
+              <li>Carpetas compartidas</li>
+              <li>Firma EC</li>
+              <li>Activación de productos</li>
+              <li>Impresoras</li>
+              <li>Solicitud de equipo para proyección</li>
+              <li>Correo</li>
+              <li>Desbloqueo de equipo</li>
+              <li>Informes</li>
+              <li>Formateo</li>
+
+            </ol>
+          
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Internet'">
+
+            <h4>Antes de todo, tienes que saber que todo en la Senescyt funciona con permisos. Primero, pregunta si tiene permisos de navegación. Hay funcionarios que no tienen dichos permisos y no podemos hacer nada. Solo en caso de ser autoridades tienen todos los permisos; los demás funcionarios tienen restringido el acceso a ciertas páginas web como Youtube y WhatsApp.</h4>
+            <h4>Este requerimiento engloba muchos problemas, los cuales son:</h4>
+
+            <ol>
+              <li>Portal Cautivo</li>
+              <li>Sin Internet</li>
+              <li>Por conexión Ethernet</li>
+              <li>Conexión por teléfono</li>
+              <li>Vía punto de red</li>
+            </ol>
+
+
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Portal Cautivo'">
+          <h4>El portal cautivo es una página en la cual todos los funcionarios se deben registrar para poder navegar por internet. Si es una autoridad y tiene acceso a la red de autoridades, ellos no tienen ninguna restricción. En caso de ser un funcionario estándar, prueba logearlo en el portal cautivo. Él debe ingresar sus credenciales y si tiene los permisos necesarios, ya podrá navegar. De no ser así, seguirá con restricciones.</h4>    
+
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Sin Internet'">
+           <h4>Cuando el funcionario de lleno no tiene internet, hay varias opciones:</h4>
+           <ol>
+
+            <li>Revisa si está conectado por Wifi o Ethernet.</li>
+            <li>En caso de ser Wifi, prueba reiniciando el computador. Si al reiniciar sigue sin poder conectarse a internet, manda la dirección MAC a tu tutor y pide los permisos. Para esto, usa el comando en el cmd `ipconfig /all`. Este comando te desplegará la dirección MAC o física. De preferencia, haz esto en el perfil `.\msti`.</li>
+            <li>Si ya cuenta con permisos, prueba revisando el adaptador Wifi de la computadora en caso de ser un portátil. Verifica que esté encendido. Lo puedes encontrar en el administrador de dispositivos.</li>
+
+
+           </ol>
+
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Por conexión Ethernet'">
+            <h4>Primero, en ambos casos, revisa que el lado del cable conectado a la computadora esté con una luz parpadeando. Esto se llama linkear.</h4>
+            <h4>Para esta opción hay dos casos:</h4>
+            <ol>
+              <li>Conexión por teléfono</li>
+              <h4>Si el funcionario tiene un teléfono a su lado, revisa este teléfono. Si funciona y suena, podemos descartar el teléfono. De no ser así, desconecta uno de los cables que está conectado al teléfono y espera a que funcione y suene.</h4>
+              <li>Vía punto de red</li>
+              <h4>Reinicia nuevamente el computador. Si esto no funciona, prueba desconectando el cable de red del computador. Si nada de esto funciona, pide ayuda a tu tutor.</h4>
+
+            </ol>
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Instalaciones'">
+            <h4>Cualquier instalación se debe realizar desde el MSTI. Cambia el usuario usando CTRL + ALT + SUPR.</h4>
+            <h4>Los programas más pedidos por los funcionarios son: lectores de pdf y navegadores.</h4>
+            <ol>
+              <li>Lectores de pdf</li>
+              </ol>
+              <ol>
+              <h4>Si está usando el Adobe, instala el Nitro 8 pro. Para hacerlo, buscarás el archivo en tu flash</h4>
+              <li>Instalarás el archivo como cualquier programa.</li>
+              <li>En la carpeta donde está el instalador, hay un txt que contiene credenciales de inicio de sesión. Las cuales deberás ingresar en el Nitro 8 para que el funcionario pueda acceder a todas sus funciones.</li>
+            </ol>
+              <ol>
+                <li>Navegadores</li>
+                <h4>Para instalar cualquier navegador, el proceso de instalación es el mismo. Cuando se termine de instalar, lo que harás es lo siguiente:</h4>
+
+            </ol>
+            <ol>
+              <li>Bajar las proxies.</li>
+              <li>Instalar el certificado de navegación. Para este, solo buscarás en el apartado de configuraciones la palabra "certificados". Importarás el certificado que tienes en tu flash y listo.</li>
+            </ol>
+
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Carpetas compartidas'">
+            <h4>Lo primero para las carpetas compartidas es preguntar si tiene el permiso respectivo. Si lo tiene, procede a preguntar cuál es la IP de la carpeta compartida que necesita y el nombre.
+              Lo que harás es usar WIN + R, se abrirá el ejecutar. Ingresarás la IP de la carpeta de la siguiente manera "\\ + la IP de la carpeta". Se abrirán las carpetas compartidas y solo le pasarás las que necesita.</h4>
+
+          </ng-container>
+
+
+
+          <ng-container *ngIf="card.title ==='FIRMA EC'">
+            <h4>Hay funcionarios que no tienen firma EC en sus computadores. Este programa lo usan para validar sus firmas electrónicas, ya sea por token o por archivo.
+              Lo que harás es usar el archivo de tu memoria flash con el mismo nombre, e instalar.</h4>
+
+          </ng-container>
+
+
+
+          <ng-container *ngIf="card.title ==='Activación de productos'">
+            <h4>Los productos que se piden activar con recurrencia son:</h4>
+            <ol>
+              <li>Office</li>
+              <li>Windows</li>
+            </ol>
+            <h4>Ambos pueden ser activados usando el KMS que se encuentra en la carpeta llamada Office. Al momento de ejecutarlo, se abrirá una terminal en cmd. No te asustes, solo ingresa en el cmd la letra o número que necesites para que se active el Windows, el Office o ambos.</h4>
+          </ng-container>
+
+
+
+          <ng-container *ngIf="card.title ==='Impresoras'">
+            <h4>Para agregar una impresora en el computador, lo que harás será encontrar la dirección IPv4 de la impresora. Con esto, te irás a dispositivos e impresoras en el computador y lo añadirás usando la IP que encontraste de la impresora. Configura esta impresora como predeterminada y listo.</h4>
+            <h4>Si esto no funciona, deberás instalar los drivers de la impresora. Estos se encuentran en las carpetas compartidas del MSTI. Ingresa a ellas usando su IP.</h4>
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Solicitud de equipo para proyección'">
+            <h4>Deberás llevar una laptop de la oficina a la dirección solicitada. Verifica que tenga el aplicativo para conectar la computadora por IP de ser necesario.</h4>
+            <h4>Al momento de ingresar la IP de los proyectores no ingreses los ceros, solo los demás numeros.</h4>
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Correo'">
+            <h3>Respaldo de correo</h3>
+            <h4>Este es el requerimiento que verás con más frecuencia. Los funcionarios tienen un límite de espacio para su correo y hay que hacer respaldos constantemente.</h4>
+            <ol>
+              <li>Archivo</li>
+              <li>Configuración de la cuenta (dos veces)</li>
+              <li>Archivos de datos.</li>
+              <li>Selecciona un respaldo antiguo y edita su nombre con la fecha del día actual.</li>
+              <li>Ponlo como predeterminado</li>
+              <li>Una vez hecho esto, verás el nombre de tu respaldo en el apartado izquierdo y el del funcionario más abajo.</li>
+              <li>Lo que harás es mover los archivos de la carpeta del funcionario a la del respaldo. Si tiene más carpetas, debes crearlas también. Si la carpeta está vacía, no la crees en el respaldo.</li>
+            </ol>
+            <h4>Una vez movido todo, harás los pasos 1, 2, 3 otra vez, pero esta vez seleccionarás el correo del funcionario como predeterminado, cerrarás el outlook y lo abrirás nuevamente. Verifica que el buzón se haya vaciado y listo.</h4>
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Correo sin conexión'">
+            <h4>Problema bastante frecuente, solo ingresa las credenciales del funcionario nuevamente. Antes del usuario, pon `SENESCYT\nombredeusuario`. Esto soluciona el problema. Si no lo hace, lo más probable es que tengas que mandar a resetear la contraseña en base. Manda las credenciales a tu tutor y él se encargará de eso.</h4>
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Desbloqueo de equipo'">
+            <h4>Pasa cuando la contraseña del funcionario no es correcta y bloquea el equipo después de 3 intentos. Lo que debes hacer es mandar su nombre de usuario y en base se encargarán de cambiar la contraseña.</h4>
+
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Informes'">
+            <h4>Para realizar un informe, necesitas ir a ver el bien del cual se necesita el informe. De estar dañado, toma fotografías del bien. También, toma fotos de sus códigos, de todos, LD y SENESCYT. También busca el número de serie y el modelo.</h4>
+            <h4>Sigue la plantilla que se esté usando en ese momento y listo.</h4>
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Formateo'">
+            <h4>El formateo de un equipo es una de las tareas más tediosas que se pueden realizar. Consta de muchos pasos, pero el primero y más importante es que el funcionario ya haya sacado un respaldo de sus archivos. El área de TICS no se encarga de los respaldos, solo del formateo.</h4>
+            <ol>
+              <li>Consigue una flash con Windows.</li>
+              <li>Inicia la BIOS del computador y arranca con la flash.</li>
+              <li>Configura el Windows para uso personal.</li>
+              <li>Quita todo lo que tenga que ver con localización y otros servicios. El primer perfil que se crea se lo hará con el nombre de `msti` y su respectiva contraseña `ZSE4RFV2023@`.</li>
+              <li>Una vez ingresado, debes instalar todos los programas que se usan: Office, Firma EC, Adobe, Winrar, OCS, Navegadores, Certificado de navegación y por último el Kaspersky, este último es nuestro antivirus.</li>
+            </ol>
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='OFFICE'">
+          <h4>Para instalar el Office, eliges el apartado de personalizar la instalación. Ahí quitas programas que los funcionarios no usan y no deben tener en sus computadores. Estos son: Access, InfoPath, OneNote, Publisher, SkyDrive Pro y Visio Viewer. Todos estos deben estar tachados de la instalación. Procedes con la instalación de manera normal</h4>
+
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Firma EC'">
+            <h4>Instalas desde la carpeta con el mismo nombre, dependiendo del sistema operativo instalarás la versión x64 o x32.</h4>
+
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='Adobe'">
+            <h4>Lo instalas igualmente desde la carpeta con el mismo nombre. </h4>
+
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Winrar'">
+            <h4>Casi al último está el instalador de este programa. Se instala de manera normal.</h4>
+
+          </ng-container>
+
+
+          <ng-container *ngIf="card.title ==='OCS'">
+            <h4>El OCS es el programa por el cual se nos manda la información del equipo para realizar las actas o informes. Es de suma importancia saberlo instalar. Su instalación continúa de manera normal hasta la parte en la que te pide un Server URL. Entre los `http://   /ocsinventory`, pones `http://10.0.9.165/ocsinventory`, así es como debe quedar.</h4>
+
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Certificado de navegación'">
+            <h4>Este debe ser instalado en el computador primero. Luego, procede como anteriormente se indicó con los navegadores.</h4>
+
+          </ng-container>
+
+          <ng-container *ngIf="card.title ==='Levantar el perfil'">
+            <h4>Una vez instalado todo, subiremos el dominio y cambiaremos tanto la descripción del equipo como el nombre.</h4>
+            <h4>Para esto, te irás al apartado acerca del computador, donde se miran los componentes y demás. En la parte derecha hay un apartado llamado Dominio o grupo de trabajo, depende de la versión de Windows. En la descripción pondrás el nombre del funcionario, solo el nombre y el apellido. Más abajo en configuraciones, podrás cambiar el dominio y el nombre. Para poner bien el nombre, existe una matriz en el MSTI la cual te ayuda con eso. El nombre va de acuerdo a la torre de donde sea el equipo.</h4>
+            <h4>Para el dominio, pondrás `senescyt.gob`. Te pedirá que reinicies el computador y una vez reiniciado, el computador estará en el dominio de la senescyt. Esto significa que ya podrás acceder al perfil del funcionario. Solo pon sus credenciales para entrar, no necesitas crear un usuario dentro del MSTI</h4>
+            <h4>Necesitarás realizar otra vez el procedimiento de los navegadores y el certificado de navegación. Luego, en mostrar íconos ocultos, haz clic derecho en el ícono del OCS y ejecuta OCS Inventory.</h4>
+            <h4>Por último, revisa que pueda navegar en internet con libertad y que todas las Herramientas de Office estén funcionando.</h4>
+          </ng-container>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

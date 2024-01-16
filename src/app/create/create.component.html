@@ -1,0 +1,43 @@
+<body>
+    <div class="container">
+        <div [formGroup]="form" class="form-container">
+            <h1>{{title | uppercase}}</h1>
+            <mat-form-field class="width-personalized" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name">
+                <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+                    <mat-error *ngIf="form.get('name')?.errors?.['required']">El nombre es requerido</mat-error>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field class="width-personalized" appearance="fill">
+                <mat-label>Correo Electronico</mat-label>
+                <input matInput formControlName="email">
+                <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+                    <mat-error *ngIf="form.get('email')?.errors?.['required']">El correo es requerido</mat-error>
+                    <mat-error *ngIf="form.get('email')?.errors?.['email']">El correo no es valido</mat-error>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field class="width-personalized" appearance="fill">
+                <mat-label>Cedula de Identidad</mat-label>
+                <input matInput formControlName="ci">
+                <div *ngIf="form.get('ci')?.invalid && form.get('ci')?.touched">
+                    <mat-error *ngIf="form.get('ci')?.errors?.['required']">La cedula de identidad es requerida</mat-error>
+                    <mat-error *ngIf="form.controls['ci'].errors?.['minlength']">La cedula de identidad es invalida, debe ser 10 caracteres</mat-error>
+                    <mat-error *ngIf="form.controls['ci'].errors?.['maxlength']">La cedula de identidad es invalida, debe ser 10 caracteres</mat-error>
+                    <mat-error *ngIf="form.controls['ci'].errors?.['pattern']">Letras no admitidas</mat-error>
+                </div>
+            </mat-form-field>
+            <mat-form-field class="width-personalized" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="hide? 'password'">
+                <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+                    <mat-error *ngIf="form.get('password')?.errors?.['required']">La contraseña es requerido</mat-error>
+                </div>
+            </mat-form-field>
+            <button mat-raised-button color="primary"  (click)="[addUser()]" [disabled]="form.invalid">Enviar</button>
+        </div>
+    </div>
+</body>
+
